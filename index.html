@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+}
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+body {
+	background: #e8e8e8;
+}
+.slide {
+	width: 1000px;
+	margin: 100px auto;
+	height: 200px;
+}
+.small-slide {
+	width: 600px;
+	margin: 0 auto;
+	height: 200px;
+}
+.slide ul li,
+.small-slide ul li {
+	text-align: center;
+	background: #ccc;
+}
+.handle {
+	position: absolute;
+	top: 0;
+	top: 50%;
+	margin-top: -15px;
+	width: 100%;
+	z-index: 99;
+}
+.handle a {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	font-family: 'simsun';
+	color: #333;
+	font-size: 20px;
+}
+.handle .prev {
+	left: 0;
+}
+.handle .next {
+	right: 0;
+}
+.small-slide ol {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	z-index: 9;
+	bottom: -50px;
+}
+.small-slide ol li {
+	display: inline-block;
+	vertical-align: top;
+	width: 10px;
+	height: 10px;
+	background: #dadada;
+	border-radius: 50%;
+	margin: 0 3px;
+	cursor: pointer;
+}
+.small-slide ol .on {
+	background: red;
+}
+</style>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/zSlide.js"></script>
+</head>
+<body>
+<div class="slide">
+	<ul>
+		<li>One</li>
+		<li>Two</li>
+		<li>Three</li>
+		<li>Four</li>
+		<li>Five</li>
+		<li>six</li>
+		<li>seven</li>
+		<li>eight</li>
+		<li>nine</li>
+		<li>ten</li>
+	</ul>
+	<p class="handle">
+		<a href="javascript:;" class="prev"><</a>
+		<a href="javascript:;" class="next">></a>
+	</p>
+</div>
+<div class="small-slide">
+	<ul>
+		<li>One</li>
+		<li>Two</li>
+		<li>Three</li>
+		<li>Four</li>
+		<li>Five</li>
+	</ul>
+	<p class="handle">
+		<a href="javascript:;" class="prev"><</a>
+		<a href="javascript:;" class="next">></a>
+	</p>
+</div>
+<script type="text/javascript">
+$('.slide').zSlide({
+	data: [
+		{width: 200, height: 200, left: 400, top: 0, opacity: 1}, // 中间位置
+
+		{width: 200, height: 160, left: 600, top: 20, opacity: .8}, // 中间位置右侧第一位
+		{width: 200, height: 120, left: 800, top: 40, opacity: .8}, // 中间位置右侧第二位
+		{width: 200, height: 80, left: 700, top: 60, opacity: 0}, // 中间位置右侧隐藏位
+
+		{width: 200, height: 80, left: 100, top: 60, opacity: 0}, // 中间位置左侧隐藏位
+		{width: 200, height: 120, left: 0, top: 40, opacity: .8}, // 中间位置左侧第二位
+		{width: 200, height: 160, left: 200, top: 20, opacity: .8} // 中间位置左侧第一位
+	],
+	listTrigger: true, // 列表点击切换
+	startFun: function (i) {
+	},
+	endFun: function (i) {
+	},
+	autoPlay: true,
+	delayTime: 1000
+});
+
+$('.small-slide').zSlide({
+	data: [
+		{width: 200, height: 200, left: 200, top: 0, opacity: 1}, // 中间位置
+
+		{width: 200, height: 160, left: 400, top: 20, opacity: .8}, // 中间位置右侧第一位
+		{width: 200, height: 120, left: 300, top: 40, opacity: 0}, // 中间位置右侧隐藏位
+
+		{width: 200, height: 120, left: 100, top: 40, opacity: 0}, // 中间位置左侧隐藏位
+		{width: 200, height: 160, left: 0, top: 20, opacity: .8} // 中间位置左侧第一位
+	],
+	startFun: function (i) {
+	},
+	endFun: function (i) {
+	},
+	page: true,
+	autoPlay: true
+});
+</script>
+</body>
+</html>
